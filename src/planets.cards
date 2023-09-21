@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Mercury",
+        "content": "Mercury is the closest planet to the Sun and has extreme temperature variations."
+    },
+    {
+        "name": "Venus",
+        "content": "Venus is often called Earth's twin and has a thick, toxic atmosphere."
+    },
+    {
+        "name": "Earth",
+        "content": "Earth is the only known planet to support life and is home to diverse ecosystems."
+    },
+    {
+        "name": "Mars",
+        "content": "Mars is known as the Red Planet and has been a target for future human exploration."
+    },
+    {
+        "name": "Jupiter",
+        "content": "Jupiter is the largest planet in our solar system and has a prominent system of rings."
+    },
+    {
+        "name": "Saturn",
+        "content": "Saturn is famous for its stunning ring system, which consists of icy particles."
+    },
+    {
+        "name": "Uranus",
+        "content": "Uranus is a gas giant with a unique rotation axis lying nearly in its orbital plane."
+    },
+    {
+        "name": "Neptune",
+        "content": "Neptune is the farthest known planet from the Sun and has a dynamic atmosphere."
+    },
+    {
+        "name": "Pluto",
+        "content": "Pluto, once considered the ninth planet, is now classified as a dwarf planet."
+    }
+]
