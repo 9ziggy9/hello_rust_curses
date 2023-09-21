@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use cursive::views::{
     TextView, HideableView,
     ResizedView, Button, SelectView
@@ -82,8 +83,11 @@ fn main() {
     let file_names = list_files().unwrap();
     // END DANGER
     let card_file_paths = filter_files_by_ext(&file_names, ".cards");
-    let test_cards = read_json_to_cards(&card_file_paths[0]);
-    println!("{:?}", test_cards);
+    let card_catalog: HashMap<&str, Vec<Card>> = card_file_paths
+        .iter()
+        .map(|path| read_json_to_cards(&path))
+        .collect();
+    println!("{:?}", card_catalog["planets"]);
 }
 
 fn _main() {
