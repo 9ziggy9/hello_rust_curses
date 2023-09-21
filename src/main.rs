@@ -1,10 +1,11 @@
 use std::collections::HashMap;
 use cursive::views::{
-    TextView, HideableView,
-    ResizedView, Button, SelectView
+    TextView, HideableView, Dialog,
+    ResizedView, SelectView
 };
 use cursive::view::{Selector, Resizable, Nameable};
 use cursive::Cursive;
+use cursive::align::{HAlign, VAlign};
 use serde::{Deserialize};
 use std::{fs, io};
 use std::fs::File;
@@ -65,6 +66,16 @@ fn views_init_help(a: &mut Cursive) {
     a.add_fullscreen_layer(HideableView::new(m).with_name("help"));
 }
 
+fn views_init_cat_panel(a: &mut Cursive, cat: &HashMap<&str, Vec<Card>>) {
+    let mut list: SelectView<String> = SelectView::new().h_align(HAlign::Left);
+    list.set_on_submit(|a, selected: &str| {
+        let text = format!("You selected: {}", selected);
+        a.add_layer(Dialog::info(text));
+    });
+    cat.iter().for_each(|(name, cards)| list.add_item(name.to_string(), cards[0].name.to_string()));
+    a.add_fullscreen_layer(list);
+}
+
 fn app_init_keys(a: &mut Cursive) {
     a.add_global_callback('`', Cursive::toggle_debug_console);
     a.add_global_callback('q', |s| s.quit());
@@ -87,12 +98,9 @@ fn main() {
         .iter()
         .map(|path| read_json_to_cards(&path))
         .collect();
-    println!("{:?}", card_catalog["planets"]);
-}
 
-fn _main() {
     let mut app = cursive::default();
-    views_init_help(&mut app);
+    views_init_cat_panel(&mut app, &card_catalog);
 
     app.load_toml(PATH_COLOR_SCHEME).unwrap();
 
